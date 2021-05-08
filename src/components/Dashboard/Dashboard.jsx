@@ -7,6 +7,7 @@ import { PieChart } from 'react-minimal-pie-chart';
 import { nanoid } from 'nanoid';
 import frogeApi from '../../services/api';
 import { DOLLAR, format, formatPrice, formatLastUpdateAt } from '../../util';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const DayDataTile = ({ className, date, volume, liquidity, price }) => {
   return (
@@ -177,17 +178,26 @@ const Dashboard = ({ className }) => {
   function renderStats() {
     return (
       <div className={`${className} dashboard`}>
-        <div id="refresh">
-          <Button variant="success" id="refresh-btn" onClick={getStats}>
-            {isLoading ? 'Refresh…' : 'Refresh'}
-          </Button>
-          <div id="last-update-at">
-            {refreshDate &&
-              `Last update at: ${formatLastUpdateAt(refreshDate)}, caches for 15 seconds.`}
-          </div>
-        </div>
+        <StaticImage
+          className="logo"
+          placeholder="blurred"
+          width={120}
+          height={120}
+          src="../../images/redpanda-logo.png"
+          alt="Froge"
+        />
 
         <ul className="mt-4">
+          <div id="refresh">
+            <Button variant="success" id="refresh-btn" onClick={getStats}>
+              {isLoading ? 'Refresh…' : 'Refresh'}
+            </Button>
+            <div id="last-update-at">
+              {refreshDate &&
+                `Last update at: ${formatLastUpdateAt(refreshDate)}, caches for 15 seconds.`}
+            </div>
+          </div>
+
           <h2 className="header">General</h2>
           <hr />
           <li>

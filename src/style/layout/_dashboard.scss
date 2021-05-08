@@ -11,7 +11,7 @@
 .dashboard {
   #last-update-at {
     font-size: 1.3rem;
-    color: #000;
+    color: $dark-grey;
     font-weight: 600;
     margin-bottom: 3rem;
   }
@@ -60,7 +60,7 @@
 }
 
 #refresh {
-  text-align: center;
+  text-align: start;
 }
 
 .tile {

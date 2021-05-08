@@ -32,7 +32,7 @@ const Footer = () => {
         <hr />
         <p className="footer__text">
           Redpanda dashboard collects information from Uniswap, Ethplorer and Etherscan apis every
-          15 seconds
+          15 seconds\
           <a href="https://github.com/EverexIO/Ethplorer/wiki/Ethplorer-API">Ethplorer API</a>
         </p>
       </Container>
