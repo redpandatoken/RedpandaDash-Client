@@ -9,17 +9,13 @@ import frogeApi from '../../services/api';
 import { DOLLAR, format, formatPrice, formatLastUpdateAt } from '../../util';
 import { StaticImage } from 'gatsby-plugin-image';
 
-const DayDataTile = ({ className, date, volume, liquidity, price }) => {
+const DayDataTile = ({ className, date, volume, price }) => {
   return (
     <div className={`day-data-tile tile ${className ?? ''}`}>
       <h2 id="title">{moment.unix(date).format('ll')}</h2>
       <div>
         <div className="tile-label">Volume</div>
         <span id="value">{DOLLAR + format(volume)}</span>
-      </div>
-      <div>
-        <div className="tile-label">Liquidity</div>
-        <span id="value">{DOLLAR + format(liquidity)}</span>
       </div>
       <div>
         <div className="tile-label">Price</div>
@@ -33,7 +29,6 @@ DayDataTile.propTypes = {
   className: PropTypes.string,
   date: PropTypes.number,
   volume: PropTypes.string,
-  liquidity: PropTypes.string,
   price: PropTypes.string,
 };
 
@@ -183,8 +178,8 @@ const Dashboard = ({ className }) => {
           placeholder="blurred"
           width={120}
           height={120}
-          src="../../images/redpanda-logo.png"
-          alt="Froge"
+          src="../../images/redpanda.png"
+          alt="Redpanda"
         />
 
         <ul className="mt-4">
@@ -220,6 +215,9 @@ const Dashboard = ({ className }) => {
             <Tile title="Market cap" prefix={DOLLAR} value={stats.marketCap} />
           </li>
           <li>
+            <Tile title="Liquidity" prefix={DOLLAR} value={stats.totalLiquidityUSD} />
+          </li>
+          <li>
             <Tile title="Total supply" value={stats.supply.total} />
           </li>
           <li>
@@ -239,7 +237,6 @@ const Dashboard = ({ className }) => {
                 <li key={nanoid()}>
                   <DayDataTile
                     date={dayData.date}
-                    liquidity={dayData.totalLiquidityUSD}
                     price={dayData.priceUSD}
                     volume={dayData.dailyVolumeUSD}
                   />

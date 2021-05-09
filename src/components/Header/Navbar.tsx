@@ -7,14 +7,6 @@ const Navbar = () => {
     <div>
       <N id="navbar" collapseOnSelect expand="lg" fixed="top">
         <N.Brand href="#">
-          <StaticImage
-            className="logo"
-            placeholder="blurred"
-            width={40}
-            height={40}
-            src="../../images/redpanda-logo.png"
-            alt="Froge"
-          />
           <span id="site-title">RedPanda Dashboard</span>
         </N.Brand>
         <N.Toggle aria-controls="responsive-navbar-nav" />
