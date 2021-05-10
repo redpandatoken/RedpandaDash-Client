@@ -177,14 +177,24 @@ const Dashboard = ({ className }) => {
   function renderStats() {
     return (
       <div className={`${className} dashboard`}>
-        <StaticImage
-          className="logo"
-          placeholder="blurred"
-          width={120}
-          height={120}
-          src="../../images/redpanda.png"
-          alt="Redpanda"
-        />
+        <div id="donation-wallet-container">
+          <StaticImage
+            className="logo"
+            placeholder="blurred"
+            width={120}
+            height={120}
+            src="../../images/redpanda.png"
+            alt="Redpanda"
+          />
+          <div id="donation-wallet">
+            <Tile
+              title="Donation Wallet"
+              formatValue={false}
+              prefix={DOLLAR}
+              value={format(stats.donations.balance)}
+            />{' '}
+          </div>
+        </div>
 
         <ul className="mt-4">
           <div id="refresh">
@@ -199,14 +209,6 @@ const Dashboard = ({ className }) => {
 
           <h2 className="header">General</h2>
           <hr />
-          <li>
-            <Tile
-              title="Donation Wallet"
-              formatValue={false}
-              prefix={DOLLAR}
-              value={format(stats.donations.balance)}
-            />
-          </li>
           <li>
             <Tile title="Holders" formatValue={false} value={stats.tokenInfo.holders} />
           </li>
