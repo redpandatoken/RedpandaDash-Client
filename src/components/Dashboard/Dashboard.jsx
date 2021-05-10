@@ -115,7 +115,11 @@ const Dashboard = ({ className }) => {
     }
     return (
       <li>
-        <Tile title="Top 20 holders" suffix="%" value={stats.topHolders.totalShare} />
+        <Tile
+          title={`Top ${stats.topHolders.holders.length} holders`}
+          suffix="%"
+          value={stats.topHolders.totalShare}
+        />
       </li>
     );
   }
@@ -125,7 +129,7 @@ const Dashboard = ({ className }) => {
       return <div />;
     }
 
-    const data = stats.topHolders.holders.slice(1).map((e) => {
+    const data = stats.topHolders.holders.map((e) => {
       return { title: e.share, value: e.share, color: '#c92238' };
     });
 
@@ -195,6 +199,14 @@ const Dashboard = ({ className }) => {
 
           <h2 className="header">General</h2>
           <hr />
+          <li>
+            <Tile
+              title="Donation Wallet"
+              formatValue={false}
+              prefix={DOLLAR}
+              value={format(stats.donations.balance)}
+            />
+          </li>
           <li>
             <Tile title="Holders" formatValue={false} value={stats.tokenInfo.holders} />
           </li>
